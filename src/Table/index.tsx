@@ -1,16 +1,17 @@
-'use client';
+"use client";
 
-import '@ui5/webcomponents-compat/dist/Table.js';
+import "@ui5/webcomponents-compat/dist/Table.js";
 import type {
   TablePopinChangeEventDetail,
   TableSelectionChangeEventDetail,
-} from '@ui5/webcomponents-compat/dist/Table.js';
-import type { TableRowClickEventDetail } from '@ui5/webcomponents-compat/dist/TableRow.js';
-import type TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
-import type TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
+} from "@ui5/webcomponents-compat/dist/Table.js";
+import type { TableRowClickEventDetail } from "@ui5/webcomponents-compat/dist/TableRow.js";
+import type TableGrowingMode from "@ui5/webcomponents-compat/dist/types/TableGrowingMode.js";
+import type TableMode from "@ui5/webcomponents-compat/dist/types/TableMode.js";
 import { Ui5CustomEvent, UI5WCSlotsNode } from "../type";
-import { withWebComponent } from '../withWebComponents.js'
-import type { HTMLAttributes, ReactNode } from 'react';
+import { withWebComponent } from "../withWebComponents.js";
+import type { HTMLAttributes, ReactNode } from "react";
+import { getCompatCustomElementsScopingSuffix } from "@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js";
 
 interface TableAttributes {
   /**
@@ -133,19 +134,21 @@ interface TableAttributes {
   stickyColumnHeader?: boolean;
 }
 
-interface TableDomRef extends Required<TableAttributes>, HTMLAttributes<HTMLElement> {}
+interface TableDomRef
+  extends Required<TableAttributes>,
+    HTMLAttributes<HTMLElement> {}
 
 interface TablePropTypes
   extends TableAttributes,
     Omit<
-        HTMLAttributes<HTMLElement>,
+      HTMLAttributes<HTMLElement>,
       | keyof TableAttributes
-      | 'children'
-      | 'columns'
-      | 'onLoadMore'
-      | 'onPopinChange'
-      | 'onRowClick'
-      | 'onSelectionChange'
+      | "children"
+      | "columns"
+      | "onLoadMore"
+      | "onPopinChange"
+      | "onRowClick"
+      | "onSelectionChange"
     > {
   /**
    * Defines the component rows.
@@ -188,7 +191,9 @@ interface TablePropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
+  onPopinChange?: (
+    event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>,
+  ) => void;
 
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
@@ -197,7 +202,9 @@ interface TablePropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
+  onRowClick?: (
+    event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>,
+  ) => void;
 
   /**
    * Fired when selection is changed by user interaction
@@ -209,7 +216,9 @@ interface TablePropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
+  onSelectionChange?: (
+    event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>,
+  ) => void;
 }
 
 /**
@@ -269,23 +278,24 @@ interface TablePropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/Table.js` instead.
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
-  'ui5-table',
+  "ui5-table",
   [
-    'accessibleName',
-    'accessibleNameRef',
-    'busyDelay',
-    'growing',
-    'growingButtonSubtext',
-    'growingButtonText',
-    'mode',
-    'noDataText',
+    "accessibleName",
+    "accessibleNameRef",
+    "busyDelay",
+    "growing",
+    "growingButtonSubtext",
+    "growingButtonText",
+    "mode",
+    "noDataText",
   ],
-  ['busy', 'hideNoData', 'stickyColumnHeader'],
-  ['columns'],
-  ['load-more', 'popin-change', 'row-click', 'selection-change'],
+  ["busy", "hideNoData", "stickyColumnHeader"],
+  ["columns"],
+  ["load-more", "popin-change", "row-click", "selection-change"],
+  getCompatCustomElementsScopingSuffix(),
 );
 
-Table.displayName = 'Table';
+Table.displayName = "Table";
 
 export { Table };
 export type { TableDomRef, TablePropTypes };

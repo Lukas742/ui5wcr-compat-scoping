@@ -3,6 +3,7 @@
 import "@ui5/webcomponents-compat/dist/TableGroupRow.js";
 import { withWebComponent } from "../withWebComponents.js";
 import type { HTMLAttributes, ReactNode } from "react";
+import { getCompatCustomElementsScopingSuffix } from "@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js";
 
 interface TableGroupRowAttributes {}
 
@@ -32,7 +33,14 @@ interface TableGroupRowPropTypes
 const TableGroupRow = withWebComponent<
   TableGroupRowPropTypes,
   TableGroupRowDomRef
->("ui5-table-group-row", [], [], [], []);
+>(
+  "ui5-table-group-row",
+  [],
+  [],
+  [],
+  [],
+  getCompatCustomElementsScopingSuffix(),
+);
 
 TableGroupRow.displayName = "TableGroupRow";
 

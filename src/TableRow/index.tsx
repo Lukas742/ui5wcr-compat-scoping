@@ -4,6 +4,7 @@ import "@ui5/webcomponents-compat/dist/TableRow.js";
 import type TableRowType from "@ui5/webcomponents-compat/dist/types/TableRowType.js";
 import { withWebComponent } from "../withWebComponents.js";
 import type { HTMLAttributes, ReactNode } from "react";
+import { getCompatCustomElementsScopingSuffix } from "@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js";
 
 interface TableRowAttributes {
   /**
@@ -59,6 +60,7 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ["navigated", "selected"],
   [],
   [],
+  getCompatCustomElementsScopingSuffix(),
 );
 
 TableRow.displayName = "TableRow";

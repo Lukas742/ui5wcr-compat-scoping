@@ -88,6 +88,7 @@ export const withWebComponent = <
   booleanProperties: string[],
   slotProperties: string[],
   eventProperties: string[],
+  compatSuffix?: string,
 ) => {
   const webComponentsSupported = parseSemVer(version).major >= 19;
   // displayName will be assigned in the individual files
@@ -96,15 +97,24 @@ export const withWebComponent = <
     (props, wcRef) => {
       const { className, children, waitForDefine, ...rest } = props;
       const [componentRef, ref] = useSyncRef<RefType>(wcRef);
-      const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
-      const Component = (tagNameSuffix
-        ? `${tagName}-${tagNameSuffix}`
-        : tagName) as unknown as ComponentType<
+      const tagNameSuffix = getEffectiveScopingSuffixForTag(tagName);
+      let effectiveTagName = tagName;
+
+      if (compatSuffix && tagNameSuffix) {
+        effectiveTagName = `${tagName}-${compatSuffix}-${tagNameSuffix}`;
+      } else if (compatSuffix) {
+        effectiveTagName = `${tagName}-${compatSuffix}`;
+      } else if (tagNameSuffix) {
+        effectiveTagName = `${tagName}-${tagNameSuffix}`;
+      }
+      const Component = effectiveTagName as unknown as ComponentType<
         HTMLAttributes<HTMLElement> & { class?: string; ref?: Ref<RefType> }
       >;
+
       const [isDefined, setIsDefined] = useState(
         definedWebComponents.has(Component),
       );
+
       // regular props (no booleans, no slots and no events)
       const regularProps = regularProperties.reduce((acc, name) => {
         if (

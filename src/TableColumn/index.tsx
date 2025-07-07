@@ -4,6 +4,7 @@ import "@ui5/webcomponents-compat/dist/TableColumn.js";
 import type TableColumnPopinDisplay from "@ui5/webcomponents-compat/dist/types/TableColumnPopinDisplay.js";
 import { withWebComponent } from "../withWebComponents.js";
 import type { HTMLAttributes, ReactNode } from "react";
+import { getCompatCustomElementsScopingSuffix } from "@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js";
 
 interface TableColumnAttributes {
   /**
@@ -73,6 +74,7 @@ const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   ["demandPopin"],
   [],
   [],
+  getCompatCustomElementsScopingSuffix(),
 );
 
 TableColumn.displayName = "TableColumn";

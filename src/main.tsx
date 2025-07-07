@@ -1,3 +1,4 @@
+import "./scoping.ts";
 import "@ui5/webcomponents/dist/Assets.js";
 import "@ui5/webcomponents-compat/dist/Assets.js";
 import { createRoot } from "react-dom/client";
