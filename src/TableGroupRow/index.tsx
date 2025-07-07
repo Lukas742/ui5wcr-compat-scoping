@@ -34,12 +34,11 @@ const TableGroupRow = withWebComponent<
   TableGroupRowPropTypes,
   TableGroupRowDomRef
 >(
-  "ui5-table-group-row",
+  `ui5-table-group-row${getCompatCustomElementsScopingSuffix() ? `-${getCompatCustomElementsScopingSuffix()}` : ""}`,
   [],
   [],
   [],
   [],
-  getCompatCustomElementsScopingSuffix(),
 );
 
 TableGroupRow.displayName = "TableGroupRow";

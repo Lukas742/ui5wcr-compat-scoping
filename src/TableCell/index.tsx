@@ -27,12 +27,11 @@ interface TableCellPropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/TableCell.js` instead.
  */
 const TableCell = withWebComponent<TableCellPropTypes, TableCellDomRef>(
-  "ui5-table-cell",
+  `ui5-table-cell${getCompatCustomElementsScopingSuffix() ? `-${getCompatCustomElementsScopingSuffix()}` : ""}`,
   [],
   [],
   [],
   [],
-  getCompatCustomElementsScopingSuffix(),
 );
 
 TableCell.displayName = "TableCell";

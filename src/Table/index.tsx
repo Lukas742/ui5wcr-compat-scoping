@@ -278,7 +278,7 @@ interface TablePropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/Table.js` instead.
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
-  "ui5-table",
+  `ui5-table${getCompatCustomElementsScopingSuffix() ? `-${getCompatCustomElementsScopingSuffix()}` : ""}`,
   [
     "accessibleName",
     "accessibleNameRef",
@@ -292,7 +292,6 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ["busy", "hideNoData", "stickyColumnHeader"],
   ["columns"],
   ["load-more", "popin-change", "row-click", "selection-change"],
-  getCompatCustomElementsScopingSuffix(),
 );
 
 Table.displayName = "Table";

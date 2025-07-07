@@ -55,12 +55,11 @@ interface TableRowPropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/TableRow.js` instead.
  */
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
-  "ui5-table-row",
+  `ui5-table-row${getCompatCustomElementsScopingSuffix() ? `-${getCompatCustomElementsScopingSuffix()}` : ""}`,
   ["type"],
   ["navigated", "selected"],
   [],
   [],
-  getCompatCustomElementsScopingSuffix(),
 );
 
 TableRow.displayName = "TableRow";

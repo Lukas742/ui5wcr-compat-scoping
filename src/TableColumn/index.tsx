@@ -69,12 +69,11 @@ interface TableColumnPropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/Table.js` instead.
  */
 const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
-  "ui5-table-column",
+  `ui5-table-column${getCompatCustomElementsScopingSuffix() ? `-${getCompatCustomElementsScopingSuffix()}` : ""}`,
   ["minWidth", "popinDisplay", "popinText"],
   ["demandPopin"],
   [],
   [],
-  getCompatCustomElementsScopingSuffix(),
 );
 
 TableColumn.displayName = "TableColumn";
